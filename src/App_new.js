@@ -15,6 +15,7 @@ class BooksApp extends React.Component {
     )
   }
 
+
   render(){
     this.listBooks()
     return(
@@ -36,3 +37,6 @@ class BooksApp extends React.Component {
 }
 
 export default BooksApp
+
+
+// Object { title: "React", subtitle: "Die praktische Einführung in React,…", authors: Array[2], publisher: "dpunkt.verlag", publishedDate: "2016-07-07", description: "React ist ein JavaScript-Framework …", industryIdentifiers: Array[2], readingModes: Object, pageCount: 342, printType: "BOOK", 12 more… }
