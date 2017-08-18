@@ -9,7 +9,7 @@ class BooksApp extends React.Component {
 
   listBooks = () => {
     BooksAPI.getAll().then((books) =>
-      this.setState(
+      (this.state.books.length !== books.length) && this.setState(
         { books }
       )
     )
@@ -22,13 +22,7 @@ class BooksApp extends React.Component {
       <div>
       {this.state.books.map((bookData) => (
         <li>
-          <div>
-            <p> Title:  { bookData.title } </p>
-            <p> subtitle : { bookData.subtitle } </p>
-            <p> publisher: { bookData.publisher } </p>
-            <p> publishedDate:  { bookData.publishedDate } </p>
-            <p> description: { bookData.description } </p>
-          </div>
+            <div className="book-cover" style = {{ width: 128, height: 193, backgroundImage: `url(${bookData.imageLinks.thumbnail})`}} />
         </li>
       ))}
       </div>
