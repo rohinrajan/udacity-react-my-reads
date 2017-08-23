@@ -42,7 +42,7 @@ class ListBooks extends Component {
                           </div>
                         </div>
                         <div className="book-title">{book.title}</div>
-                        <div className="book-authors">{JSON.stringify(book.authors)}</div>
+                        <div className="book-authors">{book.authors.toString()}</div>
                       </div>
                     </li>
                   ))}
@@ -72,7 +72,7 @@ class ListBooks extends Component {
                           </div>
                         </div>
                         <div className="book-title">{book.title}</div>
-                        <div className="book-authors">{JSON.stringify(book.authors)}</div>
+                        <div className="book-authors">{book.authors.toString()}</div>
                       </div>
                     </li>
                   ))}
@@ -102,7 +102,7 @@ class ListBooks extends Component {
                           </div>
                         </div>
                         <div className="book-title">{book.title}</div>
-                        <div className="book-authors">{JSON.stringify(book.authors)}</div>
+                        <div className="book-authors">{book.authors.toString()}</div>
                       </div>
                     </li>
                   ))}
