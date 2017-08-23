@@ -17,12 +17,20 @@ class BooksApp extends React.Component {
     )
   }
 
-  
+
+  onUpdateBooks = (values) => {
+    var bookObj = BooksAPI.get(values.id)
+    bookObj = BooksAPI.update(bookObj,values.self)
+    var tmpBooks = this.state.books.filter((book) => book.id !== bookObj.id)
+    this.setState({books: tmpBooks.concat([bookObj])})
+  }
+
 
   render(){
     return(
       <div>
-        <ListBooks books={this.state.books} displayList={this.state.displayList}/>
+        <ListBooks books={this.state.books} displayList={this.state.displayList}
+          updateBookShelf={this.onUpdateBooks}/>
       </div>
     )
   }

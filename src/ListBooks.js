@@ -3,8 +3,9 @@ import './App.css'
 
 class ListBooks extends Component {
  state = {
-   display : 'false'
+
  }
+ 
 
   render(){
     const {books, displayList} = this.props
@@ -15,7 +16,7 @@ class ListBooks extends Component {
     return (
       <div className="list-books">
         <div className="list-books-title">
-            <h1>Rohin's Version of MyReads</h1>
+            <h1>"In Progress"</h1>
         </div>
         <div className="list-books-content">
           <div>
