@@ -5,11 +5,14 @@ class ListBooks extends Component {
  state = {
 
  }
- 
+ logger(event){
+   console.log(event.target.value)
+   console.log(event.target.name)
+ }
 
   render(){
-    const {books, displayList} = this.props
-    console.log(books)
+    const {books, displayList, updateBookShelf} = this.props
+    // console.log(books)
     const currentreading = books.filter((book) => (book.shelf === "currentlyReading"))
     const wantToRead = books.filter((book) => (book.shelf === "wantToRead"))
     const read = books.filter((book) => (book.shelf === "read"))
@@ -33,7 +36,7 @@ class ListBooks extends Component {
                               backgroundImage: `url(${book.imageLinks.thumbnail})` }}>
                           </div>
                           <div className="book-shelf-changer">
-                            <select>
+                            <select value={book.shelf} onChange={(e) => updateBookShelf(book,e.target.value)}>
                               <option value="none" disabled>Move to...</option>
                               <option value="currentlyReading">Currently Reading</option>
                               <option value="wantToRead">Want to Read</option>
@@ -63,7 +66,7 @@ class ListBooks extends Component {
                               backgroundImage: `url(${book.imageLinks.thumbnail})` }}>
                           </div>
                           <div className="book-shelf-changer">
-                            <select>
+                            <select value={book.shelf} onChange={(e) => updateBookShelf(book,e.target.value)}>
                               <option value="none" disabled>Move to...</option>
                               <option value="currentlyReading">Currently Reading</option>
                               <option value="wantToRead">Want to Read</option>
@@ -93,7 +96,7 @@ class ListBooks extends Component {
                               backgroundImage: `url(${book.imageLinks.thumbnail})` }}>
                           </div>
                           <div className="book-shelf-changer">
-                            <select>
+                            <select value={book.shelf} onChange={(e) => updateBookShelf(book,e.target.value)}>
                               <option value="none" disabled>Move to...</option>
                               <option value="currentlyReading">Currently Reading</option>
                               <option value="wantToRead">Want to Read</option>
