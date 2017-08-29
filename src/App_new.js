@@ -2,11 +2,13 @@ import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import ListBooks from './ListBooks'
+import SearchBook from './SearchBook'
 
 class BooksApp extends React.Component {
   state = {
     books : [],
-    displayList : false
+    displayList : false,
+    displaySearch : false
   }
 
   componentDidMount(){
@@ -28,12 +30,19 @@ class BooksApp extends React.Component {
     }
   }
 
+  searchBook = (searchQuery) => {
+    return BooksAPI.search(searchQuery)
+  }
+
 
   render(){
     return(
+      // <div>
+      //   <ListBooks books={this.state.books} displayList={this.state.displayList}
+      //     updateBookShelf={this.onUpdateBooks}/>
+      // </div>
       <div>
-        <ListBooks books={this.state.books} displayList={this.state.displayList}
-          updateBookShelf={this.onUpdateBooks}/>
+        <SearchBook onSearchResult={this.searchBook}/>
       </div>
     )
   }

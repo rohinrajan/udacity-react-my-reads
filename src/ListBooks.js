@@ -5,10 +5,6 @@ class ListBooks extends Component {
  state = {
 
  }
- logger(event){
-   console.log(event.target.value)
-   console.log(event.target.name)
- }
 
   render(){
     const {books, displayList, updateBookShelf} = this.props
@@ -114,6 +110,9 @@ class ListBooks extends Component {
               </div>
             </div>
           </div>
+        </div>
+        <div className="open-search">
+          <a>Add a book</a>
         </div>
       </div>
     )
