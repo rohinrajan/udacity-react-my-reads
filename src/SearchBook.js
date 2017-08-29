@@ -14,7 +14,11 @@ class SearchBook extends Component {
       query : value.trim()
     })
     this.props.onSearchResult(this.state.query).then((book)=>
-      
+      (typeof book !== "undefined") && (typeof book.length !== "undefined") &&
+        (this.setState({
+          isSearchDisplay: true,
+          searchList: book
+        }))
     )
   }
 
@@ -43,10 +47,10 @@ class SearchBook extends Component {
               <li key={book.id}>
                 <div className="book">
                   <div className="book-top">
-                    <div className="book-cover"
+                    {typeof book.imageLinks !== "undefined" && (<div className="book-cover"
                       style={{ width: 128, height: 192,
                         backgroundImage: `url(${book.imageLinks.thumbnail})` }}>
-                    </div>
+                    </div>)}
                     <div className="book-shelf-changer">
                       <select value={book.shelf}>
                         <option value="none" disabled>Move to...</option>
@@ -58,7 +62,7 @@ class SearchBook extends Component {
                     </div>
                   </div>
                   <div className="book-title">{book.title}</div>
-                  <div className="book-authors">{book.authors.toString()}</div>
+                  { typeof book.authors !== "undefined" && (<div className="book-authors">{book.authors.toString()}</div>)}
                 </div>
               </li>
             ))}
