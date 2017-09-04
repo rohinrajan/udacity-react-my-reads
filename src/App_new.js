@@ -31,7 +31,7 @@ class BooksApp extends React.Component {
   }
 
   searchBook = (searchQuery) => {
-    return BooksAPI.search(searchQuery)
+    return BooksAPI.search(searchQuery,20)
   }
 
 
@@ -42,7 +42,7 @@ class BooksApp extends React.Component {
       //     updateBookShelf={this.onUpdateBooks}/>
       // </div>
       <div>
-        <SearchBook onSearchResult={this.searchBook}/>
+        <SearchBook onSearchResult={this.searchBook} currentBookList={this.state.books}/>
       </div>
     )
   }
