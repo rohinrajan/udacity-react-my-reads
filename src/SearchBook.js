@@ -39,17 +39,17 @@ class SearchBook extends Component {
   appendBookShelfStatus(searchBooks){
     var currentBookList = this.props.currentBookList;
     var updatedResponseBookList = searchBooks.map((sBook) => {
-      currentBookList.map((cBook) => {
+      sBook.shelf = "none";
+      currentBookList.forEach((cBook) => {
         if(cBook.id === sBook.id){
-          sBook.shelf = cBook.shelf
+          sBook.shelf = cBook.shelf;
+          return;
         }
-        else{
-          sBook.shelf = "none"
-        }
-        return sBook; // returning in innermost loop
       })
       return sBook; // returning to appended to the updatedResponseBookList
-    })
+    });
+
+    // console.log(updatedResponseBookList);
     return updatedResponseBookList
   }
 
