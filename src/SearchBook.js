@@ -54,8 +54,7 @@ class SearchBook extends Component {
   }
 
   onUpdateSearchBookShelf(sbook,newUpdatedShelf){
-    console.log(sbook.shelf);
-    console.log(newUpdatedShelf);
+    this.props.appendCurrentBookToList(sbook,newUpdatedShelf);
   }
 
   render(){
