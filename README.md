@@ -23,8 +23,13 @@ udacity-react-my-reads/
     index.js
     logo.svg
 ```
-## Available Scripts
+## To Deploy this project
 
-In the project directory, you can run:
+### Need to install node in your system
+### Install the needed components for this project by going into the 'udacity-my-reads' subdirectory and run
+
+### `npm install`
+
+### To run the project type
 
 ### `npm start`
