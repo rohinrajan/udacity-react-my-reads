@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 import { Link } from 'react-router-dom'
+import { PropTypes } from 'prop-types'
 
 class SearchBook extends Component {
 
@@ -8,6 +9,12 @@ class SearchBook extends Component {
     query : '',
     searchList : [],
     isSearchDisplay : false
+  }
+
+  static propTypes = {
+    onSearchResult : PropTypes.func.isRequired,
+    currentBookList : PropTypes.array.isRequired,
+    appendCurrentBookToList : PropTypes.func.isRequired
   }
 
   onUpdateQuery(value){

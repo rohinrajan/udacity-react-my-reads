@@ -1,10 +1,17 @@
 import React, { Component } from 'react'
 import './App.css'
 import { Link } from 'react-router-dom'
+import { PropTypes } from 'prop-types'
 
 class ListBooks extends Component {
  state = {
 
+ }
+
+ static propTypes = {
+   books : PropTypes.array.isRequired,
+   displayList : PropTypes.bool.isRequired,
+   updateBookShelf : PropTypes.func.isRequired
  }
 
   render(){
@@ -16,7 +23,7 @@ class ListBooks extends Component {
     return (
       <div className="list-books">
         <div className="list-books-title">
-            <h1>"In Progress"</h1>
+            <h1>My Reads</h1>
         </div>
         <div className="list-books-content">
           <div>
