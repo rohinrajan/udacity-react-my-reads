@@ -22,13 +22,12 @@ class BooksApp extends React.Component {
 
 
   onUpdateBooks = (book, updatedShelf) => {
-    if(book.shelf !== updatedShelf){
-      BooksAPI.update(book, updatedShelf)
-      book.shelf = updatedShelf
-      this.setState(prevState => ({
-        books: prevState.books.filter((b) => b.id !== book.id).concat([book])
-      }))
-    }
+    BooksAPI.update(book, updatedShelf).then(() => {
+          book.shelf = updatedShelf
+          this.setState(prevState => ({
+            books: prevState.books.filter((b) => b.id !== book.id).concat([book])
+          }))
+    })
   }
 
   searchBook = (searchQuery) => {

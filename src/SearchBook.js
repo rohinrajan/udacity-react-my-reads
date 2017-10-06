@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './App.css'
 import { Link } from 'react-router-dom'
 import { PropTypes } from 'prop-types'
+import BookShelf from './BookShelf'
 
 class SearchBook extends Component {
 
@@ -19,7 +20,7 @@ class SearchBook extends Component {
 
   onUpdateQuery(value){
     this.setState({
-      query : value.trim()
+      query : value
     })
     this.searchForBooks()
   }
@@ -75,32 +76,8 @@ class SearchBook extends Component {
           </div>
         </div>
         <div className="search-books-results">
-          <ol className="books-grid">
-            { this.state.isSearchDisplay && this.state.searchList.map((book)=> (
-              <li key={book.id}>
-                <div className="book">
-                  <div className="book-top">
-                    {typeof book.imageLinks !== "undefined" && (<div className="book-cover"
-                      style={{ width: 128, height: 192,
-                        backgroundImage: `url(${book.imageLinks.thumbnail})` }}>
-                    </div>)}
-                    <div className="book-shelf-changer">
-                      <select value={book.shelf} onChange={(e)=>this.onUpdateSearchBookShelf(book,e.target.value)}>
-                        <option value="none" disabled>Move to...</option>
-                        <option value="currentlyReading">Currently Reading</option>
-                        <option value="wantToRead">Want to Read</option>
-                        <option value="read">Read</option>
-                        <option value="none">None</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div className="book-title">{book.title}</div>
-                  { typeof book.authors !== "undefined" && (<div className="book-authors">{book.authors.toString()}</div>)}
-                </div>
-              </li>
-            ))}
-            { !this.state.isSearchDisplay && (<li> No Results Found </li>) }
-          </ol>
+          { this.state.isSearchDisplay && (<BookShelf bookList={this.state.searchList} book_title="Search Results" updateBookShelf={this.onUpdateSearchBookShelf}/>)}
+          { !this.state.isSearchDisplay && <p>No Results Found</p>}
         </div>
       </div>
     )
