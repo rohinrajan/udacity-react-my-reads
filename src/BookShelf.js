@@ -38,7 +38,7 @@ class BookShelf extends Component{
                     </div>
                   </div>
                   <div className="book-title">{book.title}</div>
-                  { typeof book.authors !== "undefined" && (<div className="book-authors">{book.authors.toString()}</div>)} // on search the book list has author as undefined hence provided a check
+                  { typeof book.authors !== "undefined" && (<div className="book-authors">{book.authors.toString()}</div>)} 
                 </div>
               </li>
             ))}

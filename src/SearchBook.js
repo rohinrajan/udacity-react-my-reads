@@ -62,8 +62,8 @@ class SearchBook extends Component {
     return updatedResponseBookList
   }
 
-  onUpdateSearchBookShelf(sbook,newUpdatedShelf){
-    this.props.appendCurrentBookToList(sbook,newUpdatedShelf);
+  onUpdateSearchBookShelf = (sbook,newUpdatedShelf) => {
+    this.props.appendCurrentBookToList(sbook,newUpdatedShelf)
   }
 
   render(){
