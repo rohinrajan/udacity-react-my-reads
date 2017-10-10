@@ -1,6 +1,8 @@
+# Udacity My Reads Project
+
 This project has been cloned from the udacity my reads starter code for react Nanodegree course
 
-MyReads is a project from Udacity's React Nanodegree course. This is a bookshelf app that lets you to organize books that you have read.
+MyReads is a project from udacity course work. This is a bookshelf app that lets you to organize books that you have read.
 
 ## Folder Structure
 
@@ -23,8 +25,14 @@ udacity-react-my-reads/
     index.js
     logo.svg
 ```
-## Available Scripts
+## To Deploy this project
 
-In the project directory, you can run:
+ Need to install node in your system
+
+ Install the needed components for this project by going into the 'udacity-my-reads' subdirectory and run
+
+### `npm install`
+
+ To run the project type
 
 ### `npm start`
