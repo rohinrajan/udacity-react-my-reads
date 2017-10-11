@@ -38,7 +38,7 @@ class BookShelf extends Component{
                     </div>
                   </div>
                   <div className="book-title">{book.title}</div>
-                  { typeof book.authors !== "undefined" && (<div className="book-authors">{book.authors.toString()}</div>)} 
+                  { typeof book.authors !== "undefined" && (<div className="book-authors">{book.authors.toString()}</div>)}
                 </div>
               </li>
             ))}

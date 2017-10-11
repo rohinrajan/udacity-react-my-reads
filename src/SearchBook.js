@@ -21,12 +21,11 @@ class SearchBook extends Component {
   onUpdateQuery(value){
     this.setState({
       query : value
-    })
-    this.searchForBooks()
+    }, () => this.searchForBooks(this.state.query))
   }
 
-  searchForBooks(){
-    this.props.onSearchResult(this.state.query).then((book)=> {
+  searchForBooks(searchquery){
+    this.props.onSearchResult(searchquery).then((book)=> {
         if(typeof book === "undefined" || book.error){
           this.setState({
             searchList: [],
