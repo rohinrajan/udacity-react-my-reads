@@ -9,7 +9,7 @@ class SearchBook extends Component {
   state = {
     query : '',
     searchList : [],
-    isSearchDisplay : false
+    displaySearchResults : false
   }
 
   static propTypes = {
@@ -24,21 +24,30 @@ class SearchBook extends Component {
     }, () => this.searchForBooks(this.state.query))
   }
 
+  resetSearchList(){
+    this.setState({
+      searchList: [],
+      displaySearchResults : false
+    })
+  }
+
   searchForBooks(searchquery){
-    this.props.onSearchResult(searchquery).then((book)=> {
-        if(typeof book === "undefined" || book.error){
-          this.setState({
-            searchList: [],
-            isSearchDisplay : false
-          })
-        }
-        else{
-          this.setState({
-            searchList: this.appendBookShelfStatus(book),
-            isSearchDisplay : true
-          })
-        }
-      })
+    if(searchquery){
+      this.props.onSearchResult(searchquery).then((book)=> {
+          if(typeof book === "undefined" || book.error){
+            this.resetSearchList()
+          }
+          else{
+            this.setState({
+              searchList: this.appendBookShelfStatus(book),
+              displaySearchResults : true
+            })
+          }
+        })
+    }
+    else{
+      this.resetSearchList()
+    }
   }
 
  /*
@@ -69,14 +78,14 @@ class SearchBook extends Component {
     return (
       <div className="search-books">
         <div className="search-books-bar">
-          <Link to="/" className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</Link>
+          <Link to="/" className="close-search">Close</Link>
           <div className="search-books-input-wrapper">
             <input type="text" placeholder="Search by title or author" value={this.state.query} onChange={(event)=> this.onUpdateQuery(event.target.value)}/>
           </div>
         </div>
         <div className="search-books-results">
-          { this.state.isSearchDisplay && (<BookShelf bookList={this.state.searchList} book_title="Search Results" updateBookShelf={this.onUpdateSearchBookShelf}/>)}
-          { !this.state.isSearchDisplay && <p>No Results Found</p>}
+          { this.state.displaySearchResults && (<BookShelf bookList={this.state.searchList} book_title="Search Results" updateBookShelf={this.onUpdateSearchBookShelf}/>)}
+          { !this.state.displaySearchResults && <p>No Results Found</p>}
         </div>
       </div>
     )

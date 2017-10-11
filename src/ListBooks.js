@@ -3,9 +3,12 @@ import './App.css'
 import { Link } from 'react-router-dom'
 import BookShelf from './BookShelf'
 
+/*
+  statless functional compenent to display the list of books
+*/
+
 function ListBooks(props){
   const {books, displayList, updateBookShelf} = props;
-  // console.log(books)
   const currentreading = books.filter((book) => (book.shelf === "currentlyReading"));
   const wantToRead = books.filter((book) => (book.shelf === "wantToRead"));
   const read = books.filter((book) => (book.shelf === "read"));

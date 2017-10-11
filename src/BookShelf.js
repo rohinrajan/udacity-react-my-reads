@@ -2,6 +2,10 @@ import React from 'react'
 import './App.css'
 import Book from './Book'
 
+/*
+ statless functional component to display the books in a grid (shelf)
+*/
+
 function BookShelf(props){
   return (
     <div className="bookshelf">

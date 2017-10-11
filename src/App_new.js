@@ -3,7 +3,8 @@ import * as BooksAPI from './BooksAPI'
 import './App.css'
 import ListBooks from './ListBooks'
 import SearchBook from './SearchBook'
-import { Route } from 'react-router-dom'
+import ErrorPage from './ErrorPage'
+import { Route, Switch } from 'react-router-dom'
 
 class BooksApp extends React.Component {
   state = {
@@ -37,21 +38,21 @@ class BooksApp extends React.Component {
   render(){
     return(
       <div>
-        <Route exact path="/" render={ () => (
-          <ListBooks books={this.state.books} displayList={this.state.displayList}
-            updateBookShelf={this.onUpdateBooks}/>
-        )}/>
-        <Route path="/search" render={ () => (
-          <SearchBook onSearchResult={this.searchBook}
-            currentBookList={this.state.books}
-            appendCurrentBookToList={this.onUpdateBooks}/>
-        )}/>
+        <Switch>
+          <Route exact path="/" render={ () => (
+            <ListBooks books={this.state.books} displayList={this.state.displayList}
+              updateBookShelf={this.onUpdateBooks}/>
+          )}/>
+          <Route path="/search" render={ () => (
+            <SearchBook onSearchResult={this.searchBook}
+              currentBookList={this.state.books}
+              appendCurrentBookToList={this.onUpdateBooks}/>
+          )}/>
+          <Route render={() => (<ErrorPage/>)}/>
+        </Switch>
       </div>
     )
   }
 }
 
 export default BooksApp
-
-
-// Object { title: "React", subtitle: "Die praktische Einführung in React,…", authors: Array[2], publisher: "dpunkt.verlag", publishedDate: "2016-07-07", description: "React ist ein JavaScript-Framework …", industryIdentifiers: Array[2], readingModes: Object, pageCount: 342, printType: "BOOK", 12 more… }
