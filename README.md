@@ -17,6 +17,8 @@ udacity-react-my-reads/
   src/
     icons
     ListBooks.js
+    ErrorPage.js
+    Book.js
     BookShelf.js
     SearchBook.js
     App.css
