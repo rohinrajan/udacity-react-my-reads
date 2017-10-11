@@ -6,19 +6,14 @@ import BookShelf from './BookShelf'
 
 class ListBooks extends Component {
 
-
  static propTypes = {
    books : PropTypes.array.isRequired,
    displayList : PropTypes.bool.isRequired,
    updateBookShelf : PropTypes.func.isRequired
  }
 
- bookShelfHandler = (book, updatedShelf) => {
-   this.props.updateBookShelf(book, updatedShelf)
- }
-
   render(){
-    const {books, displayList} = this.props
+    const {books, displayList, updateBookShelf} = this.props
     // console.log(books)
     const currentreading = books.filter((book) => (book.shelf === "currentlyReading"))
     const wantToRead = books.filter((book) => (book.shelf === "wantToRead"))
@@ -30,9 +25,9 @@ class ListBooks extends Component {
         </div>
         <div className="list-books-content">
           <div>
-            { displayList && (<BookShelf bookList={currentreading} book_title="Currently Reading" updateBookShelf={this.bookShelfHandler}/>)}
-            { displayList && (<BookShelf bookList={wantToRead} book_title="Want to Read" updateBookShelf={this.bookShelfHandler}/>)}
-            { displayList && (<BookShelf bookList={read} book_title="Read" updateBookShelf={this.bookShelfHandler}/>)}
+            { displayList && (<BookShelf bookList={currentreading} book_title="currently Reading" updateBookShelf={updateBookShelf}/>)}
+            { displayList && (<BookShelf bookList={wantToRead} book_title="Want to Read" updateBookShelf={updateBookShelf}/>)}
+            { displayList && (<BookShelf bookList={read} book_title="Read" updateBookShelf={updateBookShelf}/>)}
           </div>
         </div>
         <div className="open-search">

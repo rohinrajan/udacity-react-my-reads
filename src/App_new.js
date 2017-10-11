@@ -8,8 +8,7 @@ import { Route } from 'react-router-dom'
 class BooksApp extends React.Component {
   state = {
     books : [],
-    displayList : false,
-    displaySearch : false
+    displayList : false
   }
 
   componentDidMount(){
